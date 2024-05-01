@@ -99,6 +99,10 @@ export default function App() {
       phoneRef.current.value = customer.phone;
       addressRef.current.value = customer.address;
     }
+    scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
     setEditMode(true);
     setCustomerID(id);
   }
