@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef, FormEvent } from 'react';
 import { api } from './services/api';
 import Customer from './components/Customer';
+import Swal from 'sweetalert2';
 
 interface CustomerProps {
   id: string;
@@ -23,6 +24,16 @@ export default function App() {
   const phoneRef = useRef<HTMLInputElement | null >(null);
   const addressRef = useRef<HTMLInputElement | null >(null);
 
+  function sucessMessage(title: string, desc: string) {
+    Swal.fire({
+      title: `${title}`,
+      text: `${desc}`,
+      icon: "success",
+      timer: 1500,
+      timerProgressBar: true
+    });
+  }
+
   useEffect(() => {
     loadCustomers();
   }, []);
@@ -33,7 +44,7 @@ export default function App() {
     setCustomers(response.data);
   } 
 
-  async function handleDelete(id: string) {
+  async function customerDelete(id: string) {
     try {
       const response = await api.delete('/customer', {
         params: {
@@ -47,6 +58,24 @@ export default function App() {
     } catch (error) {
       console.error('Erro: ', error); 
     }
+  }
+
+  async function handleDelete(id: string) {
+    Swal.fire({
+      title: "Tem certeza?",
+      text: "Esta ação não poderá ser revertida!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sim, deletar!",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        sucessMessage('Sucesso!', 'Cliente deletado com sucesso!');
+        customerDelete(id);
+      }
+    });
   }
 
   async function changeStatus(id: string) {
@@ -89,6 +118,7 @@ export default function App() {
     addressRef.current!.value = "";
     setEditMode(false);
     setCustomerID('');
+    sucessMessage('Sucesso!', 'Cliente atualizado com sucesso!');
   }
 
   async function handleEdit(id: string) {
@@ -125,6 +155,7 @@ export default function App() {
     emailRef.current.value = "";
     phoneRef.current.value = "";
     addressRef.current.value = "";
+    sucessMessage('Sucesso!', 'Cliente cadastrado com sucesso!');
   }
 
   return(
