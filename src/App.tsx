@@ -160,10 +160,10 @@ export default function App() {
   }
 
   return(
-    <div className="w-full min-h-screen dark:bg-gray-800 bg-gray-100 flex justify-center px-4">
+    <div className="w-full min-h-screen dark:bg-gray-800 bg-gray-100 flex justify-center px-4 duration-300">
       <main className="my-10 w-full md:max-w-2xl">
-        <h1 className="text-center text-5xl font-poppins tracking-wide dark:text-white"> Clientes </h1>
-        <form className="flex flex-col my-6 dark:bg-gray-900 bg-gray-200 p-4 rounded shadow-md" onSubmit={ editMode ? handleUpdate : handleSubmit}>
+        <h1 className="text-center text-4xl sm:text-5xl font-poppins tracking-wide dark:text-white"> Clientes </h1>
+        <form className="flex flex-col my-6 dark:bg-gray-900 bg-gray-200 duration-300 p-4 rounded shadow-md" onSubmit={ editMode ? handleUpdate : handleSubmit}>
             <label className="font-medium dark:text-white"> Nome: </label>
             <input
             type="text"

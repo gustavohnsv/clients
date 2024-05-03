@@ -19,7 +19,7 @@ export default function DarkMode() {
     }
 
     return (
-        <button className="absolute top-8 right-8 bg-gray-600 p-2 rounded-full outline-none shadow-lg hover:scale-110 duration-300" onClick={handleSwitch}>
+        <button className="absolute top-10 right-8 bg-gray-600 p-2 rounded-full outline-none shadow-lg hover:scale-110 duration-300" onClick={handleSwitch}>
             { theme === 'light' ? <MdDarkMode size={25} color="#FFF"/> : <MdLightMode size={25} color="#FFFF00"/> }
         </button>
     );
