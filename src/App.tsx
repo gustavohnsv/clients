@@ -2,6 +2,7 @@ import { useEffect, useState, useRef, FormEvent } from 'react';
 import { api } from './services/api';
 import Customer from './components/Customer';
 import Swal from 'sweetalert2';
+import DarkMode from './components/DarkMode';
 
 interface CustomerProps {
   id: string;
@@ -159,11 +160,11 @@ export default function App() {
   }
 
   return(
-    <div className="w-full min-h-screen bg-gray-800 flex justify-center px-4">
+    <div className="w-full min-h-screen dark:bg-gray-800 bg-gray-100 flex justify-center px-4">
       <main className="my-10 w-full md:max-w-2xl">
-        <h1 className="text-center text-4xl font-poppins text-white"> Clientes </h1>
-        <form className="flex flex-col my-6 bg-gray-900 p-4 rounded shadow-md" onSubmit={ editMode ? handleUpdate : handleSubmit}>
-            <label className="font-medium text-white"> Nome: </label>
+        <h1 className="text-center text-5xl font-poppins tracking-wide dark:text-white"> Clientes </h1>
+        <form className="flex flex-col my-6 dark:bg-gray-900 bg-gray-200 p-4 rounded shadow-md" onSubmit={ editMode ? handleUpdate : handleSubmit}>
+            <label className="font-medium dark:text-white"> Nome: </label>
             <input
             type="text"
             placeholder="Insira seu nome..."
@@ -171,7 +172,7 @@ export default function App() {
             ref={nameRef}
             required
             />
-            <label className="font-medium text-white"> Email: </label>
+            <label className="font-medium dark:text-white"> Email: </label>
             <input 
             type="email"
             placeholder="Insira seu email..."
@@ -179,7 +180,7 @@ export default function App() {
             ref={emailRef}
             required
             />
-            <label className="font-medium text-white"> Telefone: </label>
+            <label className="font-medium dark:text-white"> Telefone: </label>
             <input
             type="text"
             placeholder="Insira seu telefone (91234-5678)..."
@@ -187,7 +188,7 @@ export default function App() {
             ref={phoneRef}
             required
             />
-            <label className="font-medium text-white"> CEP: </label>
+            <label className="font-medium dark:text-white"> CEP: </label>
             <input
             type="text"
             placeholder="Insira seu CEP (12345-666)..."
@@ -225,6 +226,7 @@ export default function App() {
           )}
         </section>
       </main>
+        <DarkMode />  
     </div>
   )
 }

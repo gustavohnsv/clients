@@ -19,7 +19,7 @@ export default function Customer({ customer, handleDelete, handleEdit, changeSta
     return (
         <article 
         key={customer.id}
-        className={`w-full bg-white rounded p-2 relative hover:scale-105 duration-200 shadow-md border-l-8 ${borderColor}`}
+        className={`w-full bg-white rounded p-2 relative hover:scale-105 duration-200 shadow-lg border-l-8 ${borderColor}`}
         >
             <p> <span className="font-medium"> Nome: </span> {customer.name} </p>
             <p> <span className="font-medium"> Email: </span> {customer.email} </p>
